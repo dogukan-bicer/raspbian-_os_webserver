@@ -1,0 +1,132 @@
+
+
+cat ddns_install.sh
+#!/bin/bash
+cd /usr/local/src/
+wget http://www.noip.com/client/linux/noip-duc-linux.tar.gz
+tar xf noip-duc-linux.tar.gz
+cd noip-2.1.9-1/
+make install
+
+
+<html>                                                                                                                       
+<title>dogukanbicer.com.tr</title>
+<h1>dogukanbicer.com.tr ye hosgeldiniz</h1><br>
+<h1>Cok yakinda hizmetinizde!</h1><br>
+<p>Ziyaret etdiginiz icin tesekur ederiz</p>
+</html>
+
+
+
+<VirtualHost *:80>                                                                                                               ServerAdmin admin@dogukanbicer.com.tr                                                                                        ServerName dogukanbicer.com.tr                                                                                               DocumentRoot /var/www/html/dogukanbicer.com.tr                                                                               DirectoryIndex index.html                                                                                                    ErrorLog ${APACHE_LOG_DIR}/dogukanbicer.com.tr_error.log                                                                     CustomLog ${APACHE_LOG_DIR}/ dogukanbicer.com.tr_access.log combinated                                                   </VirtualHost>                                                                                                                                  <VirtualHost *:80>                                                                                                               ServerAdmin admin@dogukanbicer.com.tr                                                                                        ServerName dogukanbicer.com.tr                                                                                               ServerAlias www.dogukanbicer.com.tr                                                                                          DocumentRoot /var/www/html/dogukanbicer.com.tr                                                                               DirectoryIndex index.html                                                                                                    ErrorLog ${APACHE_LOG_DIR}/dogukanbicer.com.tr_error.log                                                                     CustomLog ${APACHE_LOG_DIR}/ dogukanbicer.com.tr_access.log combined                                                     </VirtualHost>                                                                                                                               
+
+
+
+
+
+<html>
+<title>dogukanbicer.com.tr</title>
+<meta charset="utf-8">
+<h1>dogukanbicer.com.tr ye hoşgeldiniz</h1><br>
+<h1>Çok yakında hizmetinizde!</h1><br>
+<p>Ziyaret etdiğiniz için teşekkür ederiz</p>
+</html>
+
+
+
+
+
+--------------------------------------------------------------------------
+
+sudo apt-get install apache2 -y
+
+sudo systemctl restart apache2
+sudo systemctl status apache2
+
+
+sudo get-apt update
+
+sudo apt-get install mariadb-server mariadb-client -y
+
+
+
+sudo systemctl restart mariadb
+sudo systemctl status mariadb
+
+
+sudo mysql_secure_installation
+
+
+
+
+sudo apt-get install php php-cli php-mysql php-zip libapache2-mod-php -y
+
+
+sudo nano /etc/php/7.3/apache2/php.ini
+
+sudo systemctl restart apache2
+
+
+php -v
+
+
+sudo mysql_secure_installation
+
+
+sudo nano /var/www/html/info.php
+
+<?php phpinfo( ); ?>
+sudo rm -rf /var/www/html/info.php
+sudo systemctl restart apache2
+
+sudo mkdir /var/www/html/dogukanbicer.website
+sudo nano /var/www/html/dogukanbicer.website/index.html
+
+
+
+<html>
+<title>dogukanbicer.com.tr</title>
+<meta charset="utf-8">
+<h1>dogukanbicer.com.tr ye hoşgeldiniz</h1><br>
+<h1>Çok yakında hizmetinizde!</h1><br>
+<p>Ziyaret etdiğiniz için teşekkür ederiz</p>
+</html>
+
+
+sudo chown -R www-data:www-data /var/www/html/dogukanbicer.website/
+sudo chmod -R 755 /var/www/html/dogukanbicer.website/
+ls -l /var/www/html/
+
+
+<VirtualHost *:80>
+    ServerAdmin admin@dogukanbicer.website
+    ServerName dogukanbicer.website
+    ServerAlias www.dogukanbicer.website  
+    DocumentRoot /var/www/html/dogukanbicer.website
+    DirectoryIndex index.html 
+    ErrorLog ${APACHE_LOG_DIR}/dogukanbicer.website_error.log 
+    CustomLog ${APACHE_LOG_DIR}/dogukanbicer.website_access.log combined
+</VirtualHost>  
+
+sudo nano /etc/apache2/sites-available/dogukanbicer.website.conf
+
+sudo ls -l /etc/apache2/sites-enabled/ 
+
+sudo ln -s /etc/apache2/sites-available/dogukanbicer.website.conf /etc/apache2/sites-enabled/
+
+sudo ls -l /etc/apache2/sites-enabled/
+
+
+sudo unlink /etc/apache2/sites-enabled/000-default.conf
+sudo ls -l /etc/apache2/sites-enabled/
+
+
+sudo systemctl restart apache2
+
+
+
+
+
+
+sudo rpi-update d9321aceacfc6619b4238c6c764203b1122f2f9b
+

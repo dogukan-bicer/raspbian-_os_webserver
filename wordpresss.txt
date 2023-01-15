@@ -1,0 +1,44 @@
+sudo apt update && sudo apt upgrade -y
+sudo apt-get install apache2 -y
+sudo reboot
+
+
+sudo apt-get install php -y
+
+sudo apt-get install mariadb-server php-mysql -y
+sudo mysql_secure_installation
+sudo mysql -uroot -p
+create database wordpress;
+ GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost' IDENTIFIED BY 'wordpress';
+FLUSH PRIVILEGES;
+
+
+
+cd /var/www/html/
+sudo rm *
+sudo wget http://wordpress.org/latest.tar.gz
+sudo tar xzf latest.tar.gz
+sudo mv wordpress/* .
+sudo chown -R www-data: .
+
+
+sudo nano /etc/dhcpcd/conf
+
+sudo passwd root
+su
+mkdir duckdns
+nano duck.sh
+cd duckdns/
+echo url="https://www.duckdns.org/update?domains=dogukanbicer&token=610a8e66-39a0-472a-86bf-242b49b2a8f8&ip=" | curl -k -o ~/duckdns/duck.log -K -
+chmod 700 duck.sh
+crontab -e
+
+*/5 * * * * ~/duckdns/duck.sh >/dev/null 2>&1
+
+./duck.sh
+cat duck.log
+
+http://dogukanbicer.duckdns.org/
+
+sudo apt install python3-certbot-apache
+sudo certbot --apache -d <domain> -d <www.domain>
